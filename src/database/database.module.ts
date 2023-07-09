@@ -1,14 +1,8 @@
 import { Module } from '@nestjs/common';
-import { options } from './database.config';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { Todo } from '../todo/todo.model';
+import { databaseProviders } from './database.providers';
 
 @Module({
-  imports: [
-    SequelizeModule.forRoot({
-      ...options,
-      models: [Todo],
-    }),
-  ],
+  providers: [...databaseProviders],
+  exports: [...databaseProviders],
 })
 export class DatabaseModule {}
