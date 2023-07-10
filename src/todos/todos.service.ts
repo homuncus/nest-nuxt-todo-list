@@ -26,6 +26,10 @@ export class TodosService {
     return await this.todosModel.findOne({ where: { id } });
   }
 
+  async findBy(attr: string, value: number | string | boolean) {
+    return await this.todosModel.findOne({ where: { [attr]: value } });
+  }
+
   async update(id: number, updateTodoDto: UpdateTodoDto) {
     const todo = await this.todosModel.findOne({ where: { id } });
     todo.setAttributes(updateTodoDto);
