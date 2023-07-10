@@ -1,15 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { Todo } from './entities/todo.entity';
-import { ModelCtor } from 'sequelize-typescript';
-import { InjectModel } from '@nestjs/sequelize';
+import constants from 'src/constants';
 
 @Injectable()
 export class TodosService {
   constructor(
-    @InjectModel(Todo)
-    private readonly todosModel: ModelCtor<Todo>,
+    @Inject(constants.providers.Todo)
+    private readonly todosModel: typeof Todo,
   ) {}
 
   async create(createTodoDto: CreateTodoDto) {

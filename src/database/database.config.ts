@@ -4,7 +4,7 @@ export const options: SequelizeOptions = {
   dialect: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'root',
-  password: 'root',
+  username: 'kostyadb',
+  password: '1488',
   database: 'nest_todolist',
 };
