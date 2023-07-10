@@ -1,14 +1,14 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
-import { Todo } from './entities/todo.entity';
+import { todo } from './entities/todo.entity';
 import constants from 'src/constants';
 
 @Injectable()
 export class TodosService {
   constructor(
     @Inject(constants.providers.Todo)
-    private readonly todosModel: typeof Todo,
+    private readonly todosModel: typeof todo,
   ) {}
 
   async create(createTodoDto: CreateTodoDto) {

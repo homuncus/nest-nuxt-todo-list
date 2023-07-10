@@ -1,9 +1,9 @@
 import constants from 'src/constants';
-import { Todo } from '../entities/todo.entity';
+import { todo } from '../entities/todo.entity';
 
 export const todosProviders = [
   {
     provide: constants.providers.Todo,
-    useValue: Todo,
+    useValue: todo,
   },
 ];
