@@ -1,10 +1,10 @@
 import { Table, Column, Model } from 'sequelize-typescript';
 
-@Table
-export class todo extends Model {
+@Table({ tableName: 'todos' })
+export class Todo extends Model {
   @Column
   name: string;
 
-  @Column
+  @Column({ defaultValue: false })
   completed: boolean;
 }

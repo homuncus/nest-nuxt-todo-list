@@ -1,20 +1,18 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
-import { todo } from './entities/todo.entity';
-import constants from 'src/constants';
+import { Todo } from './entities/todo.entity';
+import constants from '../constants';
 
 @Injectable()
 export class TodosService {
   constructor(
     @Inject(constants.providers.Todo)
-    private readonly todosModel: typeof todo,
+    private readonly todosModel: typeof Todo,
   ) {}
 
   async create(createTodoDto: CreateTodoDto) {
-    const todo = new this.todosModel();
-    todo.setAttributes(createTodoDto);
-    return await todo.save();
+    return await new this.todosModel().setAttributes(createTodoDto).save();
   }
 
   async findAll() {

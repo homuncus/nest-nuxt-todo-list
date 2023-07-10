@@ -9,6 +9,7 @@ export class TodosController {
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto) {
+    console.log(createTodoDto);
     return this.todosService.create(createTodoDto);
   }
 
