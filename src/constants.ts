@@ -4,5 +4,6 @@ export default {
   },
   providers: {
     Todo: 'TODOS_REPOSITORY',
+    User: 'USERS_REPOSITORY',
   },
 };
