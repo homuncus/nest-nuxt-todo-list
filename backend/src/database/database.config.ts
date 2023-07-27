@@ -1,13 +1,15 @@
 import { SequelizeOptions } from 'sequelize-typescript';
 import { ConfigService } from '@nestjs/config';
+import { config as load } from 'dotenv';
+load();
 
-const { get } = new ConfigService();
+const config = new ConfigService();
 
 export const options: SequelizeOptions = {
-  dialect: get('DB_DIALECT', 'postgres'),
-  host: get('DB_HOST', 'localhost'),
-  port: get('DB_PORT', 5432),
-  username: get('DB_USER', 'root'),
-  password: get('DB_PASSWORD', 'root'),
-  database: get('DB_DATABASE', 'todolist'),
+  dialect: config.get('DB_DIALECT', 'postgres'),
+  host: config.get('DB_HOST', 'localhost'),
+  port: config.get('DB_PORT', 5432),
+  username: config.get('DB_USER', 'root'),
+  password: config.get('DB_PASSWORD', 'root'),
+  database: config.get('DB_DATABASE', 'todolist'),
 };
