@@ -1,10 +1,19 @@
 import { defineStore } from "pinia";
+import type { User } from "project-types";
 
-const useUserStore = defineStore('userStore', {
-  state: () => {
+export const useUserStore = defineStore('userStore', {
+  state: (): {
+    access_token: string,
+    user: User
+  } => {
     return {
       access_token: '',
-      user: {}
+      user: {
+        id: 0,
+        username: '',
+        createdAt: '',
+        updatedAt: ''
+      }
     }
-  }
+  },
 })
