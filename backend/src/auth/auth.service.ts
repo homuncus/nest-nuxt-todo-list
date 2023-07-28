@@ -23,6 +23,20 @@ export class AuthService {
     };
   }
 
+  async check(token) {
+    try {
+      await this.jwtService.verifyAsync(token);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  extractToken(request: Request): string | undefined {
+    const [type, token] = request.headers.get('Authorization').split(' ') ?? [];
+    return type === 'Bearer' ? token : undefined;
+  }
+
   // async signUp({ username, password, confirm }: SignUpDto): Promise<any> {
   //   // TODO: Registration
   // }
