@@ -1,4 +1,4 @@
-import axios from '@/composables/axios';
+import axios from 'utils/axios';
 import type { Todo } from "project-types";
 
 interface CreateTodoDto {

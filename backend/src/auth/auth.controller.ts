@@ -1,9 +1,11 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -19,5 +21,10 @@ export class AuthController {
   @UseGuards(GuestGuard)
   async signIn(@Body() signInDto: SignInDto) {
     return this.authService.signIn(signInDto);
+  }
+
+  @Get('check')
+  async check(@Query('token') token: string) {
+    return this.authService.check(token);
   }
 }

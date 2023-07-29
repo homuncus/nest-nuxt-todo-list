@@ -22,8 +22,10 @@
     "vue": "latest"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
     "pinia": "^2.1.6"
   }
 }
