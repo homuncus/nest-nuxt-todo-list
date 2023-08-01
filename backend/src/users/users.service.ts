@@ -11,8 +11,12 @@ export class UsersService {
     private readonly usersModel: typeof User,
   ) {}
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.usersModel.findOne({ where: { username } });
+  findOne(id: number | string): Promise<User | undefined> {
+    return this.usersModel.findOne({ where: { id } });
+  }
+
+  findBy(attr: string, value: any): Promise<User[] | undefined> {
+    return this.usersModel.findAll({ where: { [attr]: value } });
   }
 
   create(createUserDto: CreateUserDto) {

@@ -12,6 +12,7 @@ import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { AuthGuard } from '@/auth/guards/auth.guard';
+import { User } from '@/users/entities/user.entity';
 
 @Controller('todos')
 @UseGuards(AuthGuard)
@@ -25,7 +26,7 @@ export class TodosController {
 
   @Get()
   findAll() {
-    return this.todosService.findAll();
+    return this.todosService.findAll({ include: User });
   }
 
   @Get(':id')

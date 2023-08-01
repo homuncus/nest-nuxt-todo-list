@@ -13,7 +13,7 @@ export class AuthService {
   ) {}
 
   async signIn({ username, password: pass }: SignInDto): Promise<any> {
-    const user = await this.usersService.findOne(username);
+    const user = await this.usersService.findBy('username', username)[0];
     if (!(await compare(user.password, pass))) {
       throw new UnauthorizedException();
     }
@@ -23,7 +23,7 @@ export class AuthService {
     };
   }
 
-  async check(token) {
+  async check(token: string) {
     try {
       await this.jwtService.verifyAsync(token);
       return true;
@@ -34,7 +34,7 @@ export class AuthService {
 
   extractToken(request: Request): string | undefined {
     const [type, token] = request.headers.get('Authorization').split(' ') ?? [];
-    return type === 'Bearer' ? token : undefined;
+    return type.toLowerCase() === 'bearer' ? token : undefined;
   }
 
   // async signUp({ username, password, confirm }: SignUpDto): Promise<any> {

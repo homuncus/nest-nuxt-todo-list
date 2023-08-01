@@ -3,6 +3,7 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { Todo } from './entities/todo.entity';
 import constants from '../constants';
+import { FindOptions } from 'sequelize';
 
 @Injectable()
 export class TodosService {
@@ -15,8 +16,8 @@ export class TodosService {
     return await new this.todosModel().setAttributes(createTodoDto).save();
   }
 
-  async findAll() {
-    return await this.todosModel.findAll();
+  async findAll(params?: FindOptions<any>) {
+    return await this.todosModel.findAll(params);
   }
 
   async findOne(id: number) {
