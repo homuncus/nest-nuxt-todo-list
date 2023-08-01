@@ -12,20 +12,20 @@ export class TodosService {
     private readonly todosModel: typeof Todo,
   ) {}
 
-  async create(createTodoDto: CreateTodoDto) {
-    return await new this.todosModel().setAttributes(createTodoDto).save();
+  create(createTodoDto: CreateTodoDto) {
+    return new this.todosModel().setAttributes(createTodoDto).save();
   }
 
-  async findAll(params?: FindOptions<any>) {
-    return await this.todosModel.findAll(params);
+  findAll(params?: FindOptions<any>) {
+    return this.todosModel.findAll(params);
   }
 
-  async findOne(id: number) {
-    return await this.todosModel.findOne({ where: { id } });
+  findOne(id: number) {
+    return this.todosModel.findOne({ where: { id } });
   }
 
-  async findBy(attr: string, value: number | string | boolean) {
-    return await this.todosModel.findOne({ where: { [attr]: value } });
+  findBy(attr: string, value: number | string | boolean) {
+    return this.todosModel.findOne({ where: { [attr]: value } });
   }
 
   async update(id: number, updateTodoDto: UpdateTodoDto) {
@@ -34,7 +34,7 @@ export class TodosService {
     return await todo.save();
   }
 
-  async remove(id: number) {
-    return await this.todosModel.destroy({ where: { id } });
+  remove(id: number) {
+    return this.todosModel.destroy({ where: { id } });
   }
 }
